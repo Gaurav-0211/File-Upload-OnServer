@@ -1,5 +1,6 @@
 package com.file.helper;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +16,11 @@ import java.nio.file.StandardCopyOption;
 @Component
 public class FileUploadHelper {
 
-    public final String UPLOAD_DIR="D:\\Training_Project\\File-Upload\\src\\main\\resources\\static\\file";
+    //public final String UPLOAD_DIR="D:\\Training_Project\\File-Upload\\src\\main\\resources\\static\\file";
+    public final String UPLOAD_DIR= new ClassPathResource("static/file/").getFile().getAbsolutePath();
+
+    public FileUploadHelper() throws IOException {
+    }
 
     public boolean uploadFile(MultipartFile file){
         boolean f = false;

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/api/file")
@@ -33,7 +34,10 @@ public class FileUploadController {
 
             boolean f = fileUploadHelper.uploadFile(file);
             if(f){
-                return ResponseEntity.ok("File Successfully uploaded");
+                //return ResponseEntity.ok("File Successfully uploaded");
+
+                return ResponseEntity.ok(ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/")
+                        .path(file.getOriginalFilename()).toUriString());
             }
 
         } catch (Exception e) {
