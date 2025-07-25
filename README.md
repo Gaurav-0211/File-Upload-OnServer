@@ -33,19 +33,19 @@ A Spring Boot-based REST API for uploading, downloading, and managing files. Thi
 ---
 
 ## 📁 Project Structure
-src/
-│
-├── main/
-│ ├── java/com/fileupload/
-│ │ ├── controller/
-│ │ ├── service/
-│ │ ├── dto/
-| | |-- Entity/
-│ │ ├── config/
-│ │ └── FileUploadApplication.java
-│ └── resources/
-│ ├── application.properties
-│ └── static/
+### src/
+### │
+### ├── main/
+### │ ├── java/com/fileupload/
+### │ │ ├── controller/
+### │ │ ├── service/
+### │ │ ├── dto/
+### | | |-- Entity/
+### │ │ ├── config/
+### │ │ └── FileUploadApplication.java
+### │ └── resources/
+### │ ├── application.properties
+### │ └── static/
 
 
 
