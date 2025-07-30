@@ -10,42 +10,116 @@ A Spring Boot-based REST API for uploading, downloading, and managing files. Thi
 
 ---
 
-## 🚀 Tech Stack
+## 🚀 Features
 
-- **Java 17**
-- **Spring Boot 3.x**
-- **Spring Web**
-- **Lombok**
-- **Apache Commons IO** (optional, for file type detection)
-- **Swagger UI** for API documentation
-
----
-
-## ✨ Features
-
-- ✅ Upload single or multiple files via REST API
-- ✅ Download files with correct MIME types
-- ✅ Store files on local server disk (or modify for AWS S3, etc.)
-- ✅ Auto-generate unique file names to prevent conflicts
-- ✅ File size and type validation
-- ✅ API documentation with Swagger UI
+- Upload any file via REST API
+- Parse file name, type and convert them into Java objects
+- Save parsed data into the database
+- Store the uploaded file in the file system
+- Provide file download API
 
 ---
 
-## 📁 Project Structure
-### src/
-### │
-### ├── main/
-### │ ├── java/com/fileupload/
-### │ │ ├── controller/
-### │ │ ├── service/
-### │ │ ├── dto/
-### | | |-- Entity/
-### │ │ ├── config/
-### │ │ └── FileUploadApplication.java
-### │ └── resources/
-### │ ├── application.properties
-### │ └── static/
+## 📦 Tech Stack
 
+- Java 17+
+- Spring Boot 3.x
+- Spring Web
+- Spring Data JPA
+- H2 / PostgreSQL (any database of your choice)
+- Lombok
+- Maven
+- Swagger
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── controller/
+│   └── FileController.java
+├── service/
+│   └── FileService.java
+├── helper/
+│   └── FileHelper.java
+├── model/
+│   └── Files.java
+├── repository/
+│   └── FileRepository.java
+└── ...
+```
+
+---
+
+## 📤 How to Upload File
+
+**Endpoint:**
+
+```
+POST /api/file/upload
+```
+
+**Form-File Body:**
+
+- `file`: (type = `file`) Upload your file here.
+
+---
+
+## 📥 How to Download Uploaded File
+
+**Endpoint:**
+
+```
+GET /api/file/download/{filename}
+```
+
+## 🛠️ How to Run Locally
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-repo/springboot-file-upload.git
+   cd springboot-file-upload
+   ```
+
+2. **Configure DB (optional)**
+
+   - For H2 (default): No setup needed
+   - For PostgreSQL: Edit `application.properties`
+
+3. **Run the application:**
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
+4. **Access API Docs:**
+
+   ```
+   http://localhost:8080/swagger-ui/index.html
+   ```
+
+---
+
+## 📎 Sample cURL Commands
+
+### Upload File
+
+```bash
+curl -X POST http://localhost:8080/api/file/upload \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@/path/to/image.jpeg"
+```
+
+### Download Uploaded File
+
+```bash
+curl -O http://localhost:8080/api/file/download/image.jpeg
+```
+
+## 📬 Contact
+
+For improvements or bug reports, please feel free to suggest any new term to make this application more robust.
 
 
